@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+  <title>Table Output & Processing</title>
+
+</head>
+
+<body>
+
+  <h2>Table 1</h2>
+  <table id="table1">
+    <thead>
+      <tr>
+        <th>Index #</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Data will be inserted here by JS -->
+    </tbody>
+  </table>
+
+  <h2>Table 2 (Processed Values)</h2>
+  <table id="table2">
+    <thead>
+      <tr>
+        <th>Category</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Calculated results inserted here -->
+    </tbody>
+  </table>
+
+  <script>
+    // Table 1 
+    const tableData = {
+      A1: 41, A2: 18, A3: 21, A4: 63, A5: 2, A6: 53, A7: 5, A8: 57, A9: 60, A10: 93,
+      A11: 28, A12: 3, A13: 90, A14: 39, A15: 80, A16: 88, A17: 49, A18: 60, A19: 26, A20: 28
+    };
+
+    const table1Body = document.getElementById("table1").querySelector("tbody");
+    for (let key in tableData) {
+      const row = `<tr><td>${key}</td><td>${tableData[key]}</td></tr>`;
+      table1Body.innerHTML += row;
+    }
+
+    // Calculated Table 2 values 
+    const computed = {
+      Alpha: tableData["A5"] + tableData["A20"],
+      Beta: (tableData["A15"] / tableData["A7"]).toFixed(1),
+      Charlie: tableData["A13"] * tableData["A12"]
+    };
+
+    const table2Body = document.getElementById("table2").querySelector("tbody");
+    for (let key in computed) {
+      const row = `<tr><td>${key}</td><td>${computed[key]}</td></tr>`;
+      table2Body.innerHTML += row;
+    }
+  </script>
+
+</body>
+
+</html>
